@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Greeting from "./components/Greeting/index";
+import SchoppingList from "./components/SchoppingList/index";
+import OrderStatus from "./components/OrderStatus/index";
 
 function App() {
+  //const products = ["bicycle", "car", "bike"];
+  const products = [];
+
+  const orders = [
+    { orderId: 12, status: "в пути" },
+    { orderId: 6, status: "обработан" },
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Greeting name="Mary" />
+      <SchoppingList items={products} />
+      {orders.map((el, ind) => (
+        <OrderStatus key={ind} orderId={el.orderId} status={el.status} />
+      ))}
+    </>
   );
 }
-
 export default App;
